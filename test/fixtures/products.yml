@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  brand_id: 
+  description: MyText
+  allergen_id: 
+  ingredient_id: 
+  ingredient_amount: MyString
+
+two:
+  name: MyString
+  brand_id: 
+  description: MyText
+  allergen_id: 
+  ingredient_id: 
+  ingredient_amount: MyString
