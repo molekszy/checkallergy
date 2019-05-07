@@ -1,25 +1,8 @@
-<%= form_with(model: allergen, local: true) do |form| %>
-  <% if allergen.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(allergen.errors.count, "error") %> prohibited this allergen from being saved:</h2>
+<%= simple_form_for allergen do |form| %>
+ <%= form.error_notification %>
 
-      <ul>
-      <% allergen.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <%= form.input :name%>
+  <%= form.input :description%>
 
   <div class="actions">
     <%= form.submit %>
