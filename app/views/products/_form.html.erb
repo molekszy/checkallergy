@@ -1,20 +1,7 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for product do |form| %>
+ <%= form.error_notification %>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= form.input :name%>
 
   <div class="field">
     <%= form.label :product_category_id %>
@@ -26,30 +13,19 @@
     <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: false, prompt: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <%= form.input :description %>
+<p>
+  <%= form.association :allergens, as: :check_boxes, wrapper: :vertical_collection_inline %>
+  <%= form.association :ingredients, as: :check_boxes, wrapper: :vertical_collection_inline %>
 
-  <div class="field">
-    <%= form.label :ingredients %>
-    <%= form.collection_check_boxes :ingredient_ids, Ingredient.order(:name), :id, :name do |b|
-      b.label(:"data-value" => b.value) { b.check_box + b.text }
-    end %>
+  <input type="checkbox" name="nazwa" value="wartość" onclick="document.getElementById('id').style.display = this.checked ? 'block' : 'none'; this.form.elements['amount'].disabled">
+    <div id="id" style="display: none">
+    	<input type="text" name="amount">
+    </div>
+<p>
     <%= link_to 'New Ingredient', new_ingredient_path %>
-  </div>
 
-  <div class="field">
-    <%= form.label :allergens %>
-    <%= form.collection_check_boxes :allergen_ids, Allergen.order(:name), :id, :name do |b|
-      b.label(:"data-value" => b.value) { b.check_box + b.text }
-    end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ingredient_amount %>
-    <%= form.text_field :ingredient_amount %>
-  </div>
+    <%= form.input :ingredient_amount %>
 
   <div class="actions">
     <%= form.submit %>
