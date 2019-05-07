@@ -15,7 +15,6 @@
     <% @allergens.each do |allergen| %>
       <tr>
         <td><%= allergen.name %></td>
-        <td><%= allergen.description %></td>
         <td><%= link_to 'Show', allergen %></td>
         <td><%= link_to 'Edit', edit_allergen_path(allergen) %></td>
         <td><%= link_to 'Destroy', allergen, method: :delete, data: { confirm: 'Are you sure?' } %></td>

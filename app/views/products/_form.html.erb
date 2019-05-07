@@ -36,6 +36,7 @@
     <%= form.collection_check_boxes :ingredient_ids, Ingredient.order(:name), :id, :name do |b|
       b.label(:"data-value" => b.value) { b.check_box + b.text }
     end %>
+    <%= link_to 'New Ingredient', new_ingredient_path %>
   </div>
 
   <div class="field">
