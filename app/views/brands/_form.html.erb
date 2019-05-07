@@ -1,21 +1,7 @@
-<%= form_with(model: brand, local: true) do |form| %>
-  <% if brand.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(brand.errors.count, "error") %> prohibited this brand from being saved:</h2>
+<%= simple_form_for brand do |form| %>
+ <%= form.error_notification %>
 
-      <ul>
-      <% brand.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
+  <%= form.input :name%>
   <div class="actions">
     <%= form.submit %>
   </div>

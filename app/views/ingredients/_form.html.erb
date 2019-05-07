@@ -1,7 +1,10 @@
 <%= simple_form_for ingredient do |form| %>
  <%= form.error_notification %>
 
-  <%= form.input :name%>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
