@@ -1,6 +1,13 @@
-<h1>Editing Ingredient</h1>
-
-<%= render 'form', ingredient: @ingredient %>
-
-<%= link_to 'Show', @ingredient %> |
-<%= link_to 'Back', ingredients_path %>
+<div class="row">
+  <div class="col col-lg-6">
+    <div class="card border-success mb-3">
+      <div class="card-header bg-transparent border-success"><h1>Edycja składnika</h1> Modyfikuj dane</div>
+      <div class="card-body text">
+        <%= render 'form', ingredient: @ingredient %>
+      </div>
+    <div class="card-footer bg-transparent border-success">
+      <%= link_to 'Show', @ingredient %> |
+      <%= link_to 'Back', ingredients_path %>
+    </div>
+  </div>
+</div>
