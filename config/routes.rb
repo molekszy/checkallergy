@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
   end
+
+  resources :users, only: [:edit] do
+  member do
+    delete :delete_avatar_attachment
+    end
+  end
+
   root to: "welcome#index"
 
   resources :products

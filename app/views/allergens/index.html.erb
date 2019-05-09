@@ -15,12 +15,14 @@
     <% @allergens.each do |allergen| %>
       <tr>
         <td><%= allergen.name %></td>
-        <td><%= link_to 'Show', allergen %></td>
-        <td><%= link_to 'Edit', edit_allergen_path(allergen) %></td>
-        <td><%= link_to 'Destroy', allergen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', allergen, class: "btn btn-outline-primary" %></td>
+        <% if current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_allergen_path(allergen), class: "btn btn-outline-primary #{'disabled' unless user_signed_in?}" %></td>
+          <td><%= link_to 'Destroy', allergen, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger #{'disabled' unless user_signed_in?}" %></td>
+        <% end %>
       </tr>
-    <% end %>
-  </tbody>
+   <% end %>
+ </tbody>
 </table>
 
 <br>
