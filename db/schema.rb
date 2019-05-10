@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_181405) do
+ActiveRecord::Schema.define(version: 2019_05_10_192327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2019_05_09_181405) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "allergens_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "allergen_id", null: false
+    t.index ["allergen_id", "product_id"], name: "index_allergens_products_on_allergen_id_and_product_id"
+    t.index ["product_id", "allergen_id"], name: "index_allergens_products_on_product_id_and_allergen_id"
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -53,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_05_09_181405) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredients_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.index ["ingredient_id", "product_id"], name: "index_ingredients_products_on_ingredient_id_and_product_id"
+    t.index ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
   end
 
   create_table "product_categories", force: :cascade do |t|

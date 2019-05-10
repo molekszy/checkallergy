@@ -19,7 +19,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.brand_id %></td>
+        <td><%= product.brand.name %></td>
         <td><%= product.description %></td>
         <td><%= product.allergen_id %></td>
         <td><%= product.ingredient_id %></td>
