@@ -10,3 +10,7 @@ default: &default
 development:
   <<: *default
   database: checkallergy_development
+  pool: 5
+  host: localhost
+  username: checkallergy
+  password: checkallergy

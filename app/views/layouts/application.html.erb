@@ -28,11 +28,14 @@
             </a>
 
           <li class="nav-item dropdown">
+            <% unless devise_controller? %>
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Poczytaj o alergiach</a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <%= render @allergens %>
-            </div>
+
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <%= render @allergens %>
+              </div>
+            <% end %>
 
             <li class="nav-item">
               <%= link_to "Products", products_path, class: "nav-link" %>
