@@ -6,8 +6,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.references :brand
       t.text :description
       t.references :allergen
-      t.references :ingredient
-      t.string :ingredient_amount
 
       t.timestamps
     end

@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_192327) do
   create_table "ingredients_products", id: false, force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "ingredient_id", null: false
+    t.string "ingredient_amount"
     t.index ["ingredient_id", "product_id"], name: "index_ingredients_products_on_ingredient_id_and_product_id"
     t.index ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
   end
@@ -81,13 +82,10 @@ ActiveRecord::Schema.define(version: 2019_05_10_192327) do
     t.bigint "brand_id"
     t.text "description"
     t.bigint "allergen_id"
-    t.bigint "ingredient_id"
-    t.string "ingredient_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["allergen_id"], name: "index_products_on_allergen_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["ingredient_id"], name: "index_products_on_ingredient_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
