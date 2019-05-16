@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2019_05_10_192327) do
     t.bigint "product_id", null: false
     t.bigint "ingredient_id", null: false
     t.string "ingredient_amount"
-    t.index ["ingredient_id", "product_id"], name: "index_ingredients_products_on_ingredient_id_and_product_id"
     t.index ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
   end
 
