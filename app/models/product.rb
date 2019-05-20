@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   has_and_belongs_to_many :allergens
   belongs_to :brand
   belongs_to :product_category
+  has_many :product_ingredients, class_name: "Amount"
 end
