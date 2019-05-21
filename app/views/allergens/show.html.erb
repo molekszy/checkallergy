@@ -9,6 +9,7 @@
   <strong>Description:</strong>
   <%= @allergen.description %>
 </p>
-
+<% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_allergen_path(@allergen) %> |
+<% end %>
 <%= link_to 'Back', allergens_path %>
