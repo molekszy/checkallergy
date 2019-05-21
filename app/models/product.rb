@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :product_category
   has_many :product_ingredients, class_name: "Amount"
+  has_one_attached :avatar
 end

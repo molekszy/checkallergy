@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <%= image_tag (@product.avatar.variant(resize: "100x100")) if @product.avatar.attached? %>
+</p>
+
+<p>
   <strong>Brand:</strong>
   <%= @product.brand_id %>
 </p>
