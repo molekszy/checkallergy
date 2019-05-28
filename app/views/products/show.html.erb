@@ -11,7 +11,7 @@
 
 <p>
   <strong>Brand:</strong>
-  <%= @product.brand_id %>
+  <%= @product.brand.name %>
 </p>
 
 <p>
@@ -20,13 +20,17 @@
 </p>
 
 <p>
-  <strong>Allergen:</strong>
-  <%= @product.allergen_id %>
+  <strong>Allergen/s:</strong>
+  <% @product.allergens.map do |a| %>
+  <%= a.name %><%= "," unless a == @product.allergens.last %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Ingredient:</strong>
-  <%= @product.ingredient_ids %>
+  <strong>Ingredient/s:</strong>
+  <% @product.ingredients.map do |ingr| %>
+  <%= ingr.name %><%= "," unless ingr == @product.ingredients.last %>
+  <% end %>
 </p>
 
 <% if current_user.try(:admin?) %>
