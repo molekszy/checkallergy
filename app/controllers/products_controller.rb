@@ -5,8 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-
-    @products = @products.favorited_by(params[:favorited]) if params[:favorited].present?
   end
 
   # GET /products/1
