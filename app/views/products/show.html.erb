@@ -33,6 +33,11 @@
   <% end %>
 </p>
 
+<% if current_user %>
+  <%= link_to "favorite",   favorite_product_path(@product, type: "favorite"), method: :put %>
+  <%= link_to "unfavorite", favorite_product_path(@product, type: "unfavorite"), method: :put %>
+<% end %>
+
 <% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <% end %>
