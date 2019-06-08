@@ -23,7 +23,7 @@
   <%= form.input :description %>
 <p>
   <%= form.association :allergens, as: :check_boxes, wrapper: :vertical_collection_inline %>
-  <%= form.association :ingredients, as: :check_boxes, wrapper: :vertical_collection_inline %>
+  <%= form.association :ingredients, as: :check_boxes, wrapper: :vertical_collection_inline, collection: Ingredient.order(:name) %>
 
   <div class="actions">
     <%= form.submit %>

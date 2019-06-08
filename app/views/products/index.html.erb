@@ -7,6 +7,10 @@
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
 
+<% if current_user.try(:admin?) %>
+<%= link_to 'New Product', new_product_path %>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -43,6 +47,3 @@
 </table>
 
 <br>
-<% if current_user.try(:admin?) %>
-<%= link_to 'New Product', new_product_path %>
-<% end %>
