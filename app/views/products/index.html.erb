@@ -28,13 +28,6 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.brand.name %></td>
-        <td><%= product.description %></td>
-        <td><% product.allergens.map do |a| %>
-            <%= a.name %><%= "," unless a == product.allergens.last %>
-            <% end %></td>
-        <td><% product.ingredients.map do |ingr| %>
-            <%= ingr.name %><%= "," unless ingr == product.ingredients.last %>
-            <% end %></td>
 
         <td><%= link_to 'Show', product %></td>
         <% if current_user.try(:admin?) %>
