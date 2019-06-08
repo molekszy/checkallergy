@@ -1,5 +1,7 @@
 <%= simple_form_for product do |form| %>
- <%= form.error_notification %>
+ <% @product.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+     <% end %>
 
   <%= form.input :name%>
 

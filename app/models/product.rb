@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :product_category
   has_one_attached :avatar
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :favorite_products
   has_many :favorited_by, through: :favorite_products, source: :user
 end

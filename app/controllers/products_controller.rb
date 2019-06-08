@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params["search"].present? && !params["search"]["input_search"].blank?
+      query = "%#{params["search"]["input_search"]}%"
+      @products = Product.where("name ILIKE ?", query)
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
