@@ -42,15 +42,22 @@
             <li class="nav-item">
               <%= link_to "Products", products_path, class: "nav-link" %>
             </li>
+
+            <% unless user_signed_in? %>
             <li class="nav-item">
               <%= render 'devise/menu/registration_items' %>
             </li>
+            <% end %>
+
             <li class="nav-item">
               <%= render 'devise/menu/login_items' %>
             </li>
+
+            <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to "User Account", current_user, class: "nav-link" %>
             </li>
+            <% end %>
 
 
         </ul>
