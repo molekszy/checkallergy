@@ -4,4 +4,8 @@ class UsersController < ApplicationController
     user.avatar.purge
     redirect_to edit_user_registration_path
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
 end
