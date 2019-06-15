@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def index
     if params["search"].present? && !params["search"]["input_search"].blank?
       query = "%#{params["search"]["input_search"]}%"
-      @products = Product.where("name ILIKE ?", query)
+      @products = Product.joins(:brand).where("products.name ILIKE ? OR brands.name ILIKE ?", query, query)
     else
       @products = Product.all
     end
