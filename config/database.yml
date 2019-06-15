@@ -14,3 +14,7 @@ development:
   host: localhost
   username: checkallergy
   password: checkallergy
+
+test:
+  <<: *default
+  database: checkallergy_test

@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   resources :product_categories
   resources :ingredients
   resources :products do
-    put :favorite, on: :member
+    match :favorite, on: :member, via: [:put, :delete]
   end
+
+  get '/my-favorite-products/' =>'users#show_favorites'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

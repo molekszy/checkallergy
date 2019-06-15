@@ -2,16 +2,14 @@
 
 one:
   name: MyString
-  brand_id: 
+  brand_id:
   description: MyText
-  allergen_id: 
-  ingredient_id: 
-  ingredient_amount: MyString
+  allergen_id:
+
+
 
 two:
   name: MyString
-  brand_id: 
+  brand_id:
   description: MyText
-  allergen_id: 
-  ingredient_id: 
-  ingredient_amount: MyString
+  allergen_id:

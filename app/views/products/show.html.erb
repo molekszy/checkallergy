@@ -34,9 +34,10 @@
 </p>
 
 <% if user_signed_in? %>
-  <% if current_user %>
-    <%= link_to "favorite",   favorite_product_path(@product, type: "favorite"), method: :put %>
-    <%= link_to "unfavorite", favorite_product_path(@product, type: "unfavorite"), method: :put %>
+  <% if FavoriteProduct.exists?(product: @product, user: current_user) %>
+    <%= link_to "unfavorite", favorite_product_path(@product, type: "unfavorite"), method: :delete %>
+  <% else %>
+    <%= link_to "favorite", favorite_product_path(@product, type: "favorite"), method: :put %>
   <% end %>
 <% end %>
 <br>

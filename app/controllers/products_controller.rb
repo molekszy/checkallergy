@@ -67,20 +67,18 @@ class ProductsController < ApplicationController
   end
 
   def favorite
-     type = params[:type]
-     if type == "favorite"
-       current_user.favorites << @product
-       redirect_back(fallback_location: product_path)
+    @product = Product.find params[:id]
 
-     elsif type == "unfavorite"
-       current_user.favorites.delete(@product)
-       redirect_back(fallback_location: product_path)
-
-     else
-       # Type missing, nothing happens
-       redirect_back(fallback_location: product_path)
-     end
-   end
+    if request.put?
+        current_user.favorites << @product
+        redirect_back fallback_location: product_path, notice: "You successfully favorited #{@product.name}"
+    elsif request.delete?
+        current_user.favorites.delete(@product)
+        redirect_back fallback_location: product_path, notice: "You successfully unfavorited #{@product.name}"
+    else
+        redirect_back fallback_location: product_path
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

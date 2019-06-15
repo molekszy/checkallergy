@@ -8,4 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+
+  def show_favorites
+    @products = current_user.favorites
+  end
 end
