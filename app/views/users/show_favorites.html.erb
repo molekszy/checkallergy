@@ -1,9 +1,22 @@
-<tbody>
-  <% @products.each do |product| %>
+<h1>Favorite products</h1>
+
+<table class="table">
+  <thead>
     <tr>
-      <td><%= product.name %></td>
-      <td><%= product.brand.name %></td>
-      <td><%= link_to 'Show', product %></td>
+      <th>Name</th>
+      <th>Brand</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
-</tbody>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.brand.name %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to "unfavorite", favorite_product_path(product, type: "unfavorite"), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
