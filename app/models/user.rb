@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :products
   has_many :favorite_products
   has_many :favorites, through: :favorite_products, source: :product
+  validates :pesel, format: {with:/\d{11}/,
+                            message: "should contain 11 digits", allow_blank: true }
 end
