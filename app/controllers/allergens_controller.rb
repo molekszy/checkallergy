@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class AllergensController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :authenticate_admin, only: [:edit, :destroy]
-  before_action :set_allergen, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_admin, only: %i[edit destroy]
+  before_action :set_allergen, only: %i[show edit update destroy]
 
   # GET /allergens
   # GET /allergens.json
@@ -12,8 +14,7 @@ class AllergensController < ApplicationController
 
   # GET /allergens/1
   # GET /allergens/1.json
-  def show
-  end
+  def show; end
 
   # GET /allergens/new
   def new
@@ -21,8 +22,7 @@ class AllergensController < ApplicationController
   end
 
   # GET /allergens/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /allergens
   # POST /allergens.json
@@ -31,7 +31,7 @@ class AllergensController < ApplicationController
 
     respond_to do |format|
       if @allergen.save
-        format.html { redirect_to @allergen, notice: 'Allergen was successfully created.' }
+        format.html { redirect_to @allergen, notice: "Allergen was successfully created." }
         format.json { render :show, status: :created, location: @allergen }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class AllergensController < ApplicationController
   def update
     respond_to do |format|
       if @allergen.update(allergen_params)
-        format.html { redirect_to @allergen, notice: 'Allergen was successfully updated.' }
+        format.html { redirect_to @allergen, notice: "Allergen was successfully updated." }
         format.json { render :show, status: :ok, location: @allergen }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class AllergensController < ApplicationController
   def destroy
     @allergen.destroy
     respond_to do |format|
-      format.html { redirect_to allergens_url, notice: 'Allergen was successfully destroyed.' }
+      format.html { redirect_to allergens_url, notice: "Allergen was successfully destroyed." }
       format.json { head :no_content }
     end
   end

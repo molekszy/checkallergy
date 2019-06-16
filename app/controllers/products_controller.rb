@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :favorite]
+  before_action :set_product, only: %i[show edit update destroy favorite]
 
   # GET /products
   # GET /products.json
@@ -7,7 +9,7 @@ class ProductsController < ApplicationController
     @search_term = params["search"].try(:[], "input_search")
 
     if params["search"].present? && !params["search"]["input_search"].blank?
-      query = "%#{params["search"]["input_search"]}%"
+      query = "%#{params['search']['input_search']}%"
       @products = Product.joins(:brand).where("products.name ILIKE ? OR brands.name ILIKE ?", query, query)
     else
       @products = Product.all
@@ -16,8 +18,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   # GET /products/1.json
-  def show
-  end
+  def show; end
 
   # GET /products/new
   def new
@@ -25,8 +26,7 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /products
   # POST /products.json
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @product, notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,13 +72,13 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
 
     if request.put?
-        current_user.favorites << @product
-        redirect_back fallback_location: product_path, notice: "You successfully favorited #{@product.name}"
+      current_user.favorites << @product
+      redirect_back fallback_location: product_path, notice: "You successfully favorited #{@product.name}"
     elsif request.delete?
-        current_user.favorites.delete(@product)
-        redirect_back fallback_location: product_path, notice: "You successfully unfavorited #{@product.name}"
+      current_user.favorites.delete(@product)
+      redirect_back fallback_location: product_path, notice: "You successfully unfavorited #{@product.name}"
     else
-        redirect_back fallback_location: product_path
+      redirect_back fallback_location: product_path
     end
   end
 
@@ -92,9 +92,8 @@ class ProductsController < ApplicationController
       @myAmount = Amount.find_by(product: product, ingredient: ingredient)
     end
 
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :avatar, :product_category_id, :brand_id, :description, {ingredient_ids: []}, {allergen_ids: []}, :my_amount)
+      params.require(:product).permit(:name, :avatar, :product_category_id, :brand_id, :description, { ingredient_ids: [] }, { allergen_ids: [] }, :my_amount)
     end
 end

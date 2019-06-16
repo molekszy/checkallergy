@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def delete_avatar_attachment
     user = User.find(params[:id])

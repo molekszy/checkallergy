@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFavoriteProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :favorite_products do |t|

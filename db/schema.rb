@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_133103) do
-
+ActiveRecord::Schema.define(version: 20_190_601_133_103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_133103) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_133103) do
   create_table "allergens_products", id: false, force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "allergen_id", null: false
-    t.index ["allergen_id", "product_id"], name: "index_allergens_products_on_allergen_id_and_product_id"
-    t.index ["product_id", "allergen_id"], name: "index_allergens_products_on_product_id_and_allergen_id"
+    t.index %w[allergen_id product_id], name: "index_allergens_products_on_allergen_id_and_product_id"
+    t.index %w[product_id allergen_id], name: "index_allergens_products_on_product_id_and_allergen_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -73,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_133103) do
     t.bigint "product_id", null: false
     t.bigint "ingredient_id", null: false
     t.string "ingredient_amount"
-    t.index ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
+    t.index %w[product_id ingredient_id], name: "index_ingredients_products_on_product_id_and_ingredient_id"
   end
 
   create_table "product_categories", force: :cascade do |t|

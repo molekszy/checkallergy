@@ -1,4 +1,6 @@
-RSpec.describe User, :type => :model do
+# frozen_string_literal: true
+
+RSpec.describe User, type: :model do
   before(:all) do
     @user1 = create(:user)
   end

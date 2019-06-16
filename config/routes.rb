@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users, path: 'auth', path_names: { sign_in: 'login' }
+  devise_for :users, path: "auth", path_names: { sign_in: "login" }
   devise_scope :user do
-    get 'sign_in', to: 'devise/sessions#new'
+    get "sign_in", to: "devise/sessions#new"
   end
 
   resources :users, only: [:edit] do
-  member do
-    delete :delete_avatar_attachment
+    member do
+      delete :delete_avatar_attachment
     end
   end
 
@@ -20,9 +22,9 @@ Rails.application.routes.draw do
   resources :product_categories
   resources :ingredients
   resources :products do
-    match :favorite, on: :member, via: [:put, :delete]
+    match :favorite, on: :member, via: %i[put delete]
   end
 
-  get '/my-favorite-products/' =>'users#show_favorites'
+  get "/my-favorite-products/" => "users#show_favorites"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

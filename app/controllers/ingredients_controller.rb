@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :set_ingredient, only: %i[show edit update destroy]
 
   # GET /ingredients
   # GET /ingredients.json
@@ -9,8 +11,7 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/1
   # GET /ingredients/1.json
-  def show
-  end
+  def show; end
 
   # GET /ingredients/new
   def new
@@ -18,8 +19,7 @@ class IngredientsController < ApplicationController
   end
 
   # GET /ingredients/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /ingredients
   # POST /ingredients.json
@@ -28,7 +28,7 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
+        format.html { redirect_to @ingredient, notice: "Ingredient was successfully created." }
         format.json { render :show, status: :created, location: @ingredient }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
+        format.html { redirect_to @ingredient, notice: "Ingredient was successfully updated." }
         format.json { render :show, status: :ok, location: @ingredient }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient.destroy
     respond_to do |format|
-      format.html { redirect_to ingredients_url, notice: 'Ingredient was successfully destroyed.' }
+      format.html { redirect_to ingredients_url, notice: "Ingredient was successfully destroyed." }
       format.json { head :no_content }
     end
   end
