@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @search_term = params["search"].try(:[], "input_search")
+
     if params["search"].present? && !params["search"]["input_search"].blank?
       query = "%#{params["search"]["input_search"]}%"
       @products = Product.joins(:brand).where("products.name ILIKE ? OR brands.name ILIKE ?", query, query)
